@@ -25,7 +25,7 @@ while read USER ; do
   while read DATABASE ; do
     ARCHIVE="$DATABASE-$TIME"
     echo "-- Creating new backup archive $USER_REPO::$ARCHIVE"
-    mysqldump $DATABASE --opt --routines --skip-comments | borg create $OPTIONS_CREATE $USER_REPO::$ARCHIVE -
+    mysqldump $DATABASE --opt --routines --skip-comments --single-transaction | borg create $OPTIONS_CREATE $USER_REPO::$ARCHIVE -
     borg prune $OPTIONS_PRUNE $USER_REPO --prefix ${DATABASE}'-'
     let DB_COUNT++
   done < <(v-list-databases $USER | grep -w mysql | cut -d " " -f1)
