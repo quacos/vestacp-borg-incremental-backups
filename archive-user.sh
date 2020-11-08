@@ -3,7 +3,7 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 source $CURRENT_DIR/config.ini
 
 # This script will save a copy of the given user to the offline archive directory
-USAGE="restore-user.sh user"
+USAGE="archive-user.sh user"
 
 # Assign arguments
 USER=$1
